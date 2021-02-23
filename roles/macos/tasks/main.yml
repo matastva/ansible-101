@@ -1,0 +1,4 @@
+- name: Execute the script 
+  command: uptime
+  register: command_output
+- debug: msg="{{command_output.stdout}}"

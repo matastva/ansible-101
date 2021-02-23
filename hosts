@@ -1,0 +1,10 @@
+[linux:vars]
+ansible_port=22
+ansible_user=root
+ansible_become=true
+
+[linux:children]
+
+
+[localhost]
+127.0.0.1  ansible_connection=local

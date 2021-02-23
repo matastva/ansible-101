@@ -1,0 +1,6 @@
+---
+    # file: localhost.yml
+    - hosts: localhost
+      roles:
+        - macos
+        - common

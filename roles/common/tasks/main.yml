@@ -1,0 +1,10 @@
+- community.general.homebrew:
+    name: htop
+    state: present
+
+- community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.SoftwareUpdate
+    key: AutomaticCheckEnabled
+    type: string
+    value: NO
+  become: yes
