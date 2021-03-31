@@ -1,0 +1,12 @@
+---
+- name: Check URI and file with modules on linux hosts
+  hosts: linux
+
+  tasks:
+  - name: Check url with uri module
+    uri:
+      url: https://vinted.fr
+      return_content: yes
+  - name: Check file with stat module
+    stat:
+      path: /etc/resolv.conf

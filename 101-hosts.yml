@@ -1,0 +1,14 @@
+all:
+  children:
+    linux:
+      children:
+        centos:
+          hosts:
+            matas-test-1:
+              ansible_host: 161.35.216.180
+        ubuntu:
+          hosts:
+            matas-test-2:
+              ansible_host: 207.154.224.39
+     vars:
+      ansible_user: root

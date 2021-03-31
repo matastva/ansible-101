@@ -1,0 +1,9 @@
+- name: Install web server
+  ansible.builtin.yum:
+    name: "httpd"
+    state: present
+    
+- name: Make sure a service is running
+  ansible.builtin.systemd:
+    state: started
+    name: httpd

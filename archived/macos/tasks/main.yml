@@ -1,0 +1,14 @@
+- name: Execute the script 
+  command: pwd
+  register: command_output
+- debug: msg="{{command_output.stdout}}"
+
+- name: Execute the script 
+  command: uptime
+  register: command_output_uptime
+- debug: msg="{{command_output_uptime.stdout}}"
+
+- name: Execute the script 
+  command: hostname
+  register: command_output_hostname
+- debug: msg="{{command_output_hostname.stdout}}"

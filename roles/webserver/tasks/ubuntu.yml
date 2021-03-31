@@ -1,0 +1,9 @@
+- name: Install web server
+  ansible.builtin.apt:
+    name: "apache2"
+    state: present
+
+- name: Make sure a service is running
+  ansible.builtin.systemd:
+    state: started
+    name: apache2
