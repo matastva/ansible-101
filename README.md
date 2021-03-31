@@ -110,7 +110,7 @@ or
 
 # Creating playbooks
 
-Lets recreate command ``ansible linux -m ansible.builtin.uri  -a "url=https://vinted.fr" -i 101-hosts` to ansible playbook:
+Lets recreate command `ansible linux -m ansible.builtin.uri  -a "url=https://vinted.fr" -i 101-hosts` to ansible playbook:
 
 `101-playbook.yml:`
 
@@ -150,7 +150,7 @@ matas-test-2               : ok=2    changed=0    unreachable=0    failed=0    s
 
 # Creating roles
 
-Lets create a common role which install `htop` tool to linux servers:
+Lets create a webserver role which install `webserver` to linux servers and will host simple html file:
 
 First of all lets understand role file and folder structure (https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html):
 ```
@@ -187,7 +187,9 @@ Now lets create few files in role, and lets look inside:
   ansible.builtin.systemd:
     state: started
     name: httpd
+```
 
+```
 #roles/webserver/tasks/ubuntu.yml
 - name: Install web server
   ansible.builtin.apt:
@@ -198,13 +200,17 @@ Now lets create few files in role, and lets look inside:
   ansible.builtin.systemd:
     state: started
     name: apache2
+```
 
+```
 #roles/webserver/tasks/content.yml
 - name: Copy file to destination
   ansible.builtin.copy:
     src: index.html
     dest: /var/www/html/index.html
+```
 
+```
 #roles/webserver/tasks/main.yml
 - name: Install the correct web server for RHEL
   import_tasks: centos.yml
@@ -216,14 +222,15 @@ Now lets create few files in role, and lets look inside:
 
 - name: Copy web server public thml
   import_tasks: content.yml
+```
 
+```
 #roles/webserver/files/index.html
 <html>
 <body>
 <p>HI!!</p>
 </body>
 </html>
-
 ```
 
 And lest use role on play level via file `webserver.yml`:
