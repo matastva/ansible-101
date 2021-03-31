@@ -245,3 +245,14 @@ And lest use role on play level via file `webserver.yml`:
 Finally lets call playbook which will apply role to linux hosts:
 
 `ansible-playbook webserver.yml -i 101-hosts`
+
+# Using tags
+
+Let's add some tags and try to run playbooks based on tags:
+
+```
+ansible-playbook webserver.yml -i 101-hosts --tags "ubuntu"
+ansible-playbook webserver.yml -i 101-hosts --tags "ubuntu, centos"
+ansible-playbook webserver.yml -i 101-hosts --tags "content"
+ansible-playbook webserver.yml -i 101-hosts --tags "debug"
+```

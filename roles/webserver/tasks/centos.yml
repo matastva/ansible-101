@@ -1,9 +1,9 @@
-- name: Install web server
+- name: Install web server on Centos
   ansible.builtin.yum:
     name: "httpd"
     state: present
     
-- name: Make sure a service is running
+- name: Make sure a httpd is running
   ansible.builtin.systemd:
     state: started
     name: httpd
